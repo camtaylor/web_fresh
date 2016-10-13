@@ -60,18 +60,17 @@
           <a href="/"><img href="/" id="logo" class="img-responsive" src={{logo}}></img></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse" role="navigation">
-          <ul class="nav navbar-nav pull-right ">
-            <li><a href="#"><h4>Home</h4></a></li>
-            <li><a href="#about"><h4>About</h4></a></li>
-            <li><a href="#contact"><h4>Contact</h4></a></li>
+          <ul class="nav navbar-nav navbar-right ">
+            {% for name,link in navbar_links %}
+            <li><a href="{{link}}"><h4>{{name}}</h4></a></li>
+            {% endfor %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="container">
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h2 class="page-header">Bootstrap starter template</h2>
       </div>
 
     </div><!-- /.container -->

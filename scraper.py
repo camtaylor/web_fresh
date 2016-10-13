@@ -6,13 +6,17 @@ import time
 logo = [] 
 links_visited = 0
 
-def scrape_website(url):
+def get_navbar_links(url):
   global navbar_links
   html = requests.get(url)
-  print html
   soup =  BeautifulSoup(html.text, "html.parser")
-  navbar_links = soup.find_all('a')
-  logo = soup.find_all('img')
+  navbar = soup.find_all('ul')
+  navbar_links = []
+  if len(navbar) > 0:
+    for li in navbar[0].find_all('li'):
+      navbar_links.append(li.find('a'))
+  print navbar_links 
+  return [(link.string,link['href']) for link in navbar_links if link and link.has_attr('href')]
     
   
 def get_logo(url):
@@ -25,10 +29,9 @@ def get_logo(url):
     logos = soup.find_all('img')
   print logos
   return logos[0]['src']    
-  
-
+ 
 
 if __name__ == "__main__":
 
-  get_logo("http://dallaslawyers.com")
+  print get_logo(raw_input(">>>"))
     

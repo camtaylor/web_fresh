@@ -9,8 +9,9 @@ def map():
   logo = scraper.get_logo(url)
   if "http" not in logo:
     logo = url + logo
-  print logo
-  return render_template("template.html", logo=logo)
+  navbar_links = scraper.get_navbar_links(url)
+  print navbar_links
+  return render_template("template.html", logo=logo, navbar_links=navbar_links)
 
 
 if __name__ == "__main__":
